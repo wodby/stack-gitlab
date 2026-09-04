@@ -19,6 +19,14 @@ services:
   - name: repositories
     size: 50
 
+- name: runner
+  title: GitLab Runner
+  service: gitlab-runner:19
+  disabled: true
+  links:
+  - name: gitlab
+    service: gitlab
+
 - name: postgres
   title: PostgreSQL
   service: postgres:17
