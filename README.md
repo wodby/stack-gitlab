@@ -37,7 +37,7 @@ GitLab's Toolbox creates a daily archive containing the database, Gitaly reposit
 object-storage data. It uploads the archive to the configured backups bucket at 01:00 in the Kubernetes controller's
 time zone. Runs cannot overlap, have a six-hour deadline, and use a dynamically provisioned 100 GiB temporary volume.
 Ensure the cluster can provision enough working space and configure backup-bucket retention and independent
-replication.
+replication. These archives are managed directly in that bucket and do not appear as Wodby backup records.
 
 The PostgreSQL service's backup remains an additional database recovery layer. It is not a replacement for a matching
 GitLab archive. GitLab excludes Rails secrets from its archives, so keep a separately protected copy. Restoration must
