@@ -1,0 +1,34 @@
+name: gitlab-ce
+icon: gitlab
+title: GitLab Community Edition
+
+services:
+- name: gitlab
+  title: GitLab Community Edition
+  service: gitlab:19
+  required: true
+  main: true
+  links:
+  - name: postgres
+    service: postgres
+  - name: redis
+    service: valkey
+  volumes:
+  - name: repositories
+    size: 50
+
+- name: postgres
+  title: PostgreSQL
+  service: postgres:17
+  required: true
+  volumes:
+  - name: data
+    size: 20
+
+- name: valkey
+  title: Valkey
+  service: valkey:8.1
+  required: true
+  volumes:
+  - name: data
+    size: 10
