@@ -1,6 +1,6 @@
-name: gitlab-ce
+name: gitlab
 icon: gitlab
-title: GitLab Community Edition
+title: GitLab
 
 services:
 - name: gitlab

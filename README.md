@@ -1,6 +1,6 @@
-# GitLab Community Edition stack
+# GitLab stack
 
-Wodby 2 stack for a self-hosted GitLab Community Edition installation.
+Wodby 2 stack for a self-hosted GitLab installation using the Community Edition.
 
 The stack combines GitLab 19, an optional GitLab Runner 19, PostgreSQL 17, Valkey 8.1, and OpenSMTPD 7. GitLab
 repository data is persistent, and PostgreSQL and Valkey use their own persistent volumes. The PostgreSQL service
