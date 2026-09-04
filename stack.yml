@@ -13,6 +13,8 @@ services:
     service: postgres
   - name: redis
     service: valkey
+  - name: sendmail
+    service: opensmtpd
   volumes:
   - name: repositories
     size: 50
@@ -21,6 +23,30 @@ services:
   title: PostgreSQL
   service: postgres:17
   required: true
+  env:
+  - name: POSTGRES_DB
+    value: '{{database.db.name}}'
+  - name: POSTGRES_DB_EXTENSIONS
+    value: amcheck,btree_gist,pg_trgm
+  - name: POSTGRES_MAX_CONNECTIONS
+    value: '400'
+  - name: POSTGRES_SHARED_BUFFERS
+    value: 2GB
+  - name: POSTGRES_WORK_MEM
+    value: 8MB
+  - name: POSTGRES_MAINTENANCE_WORK_MEM
+    value: 128MB
+  workloads:
+  - name: main
+    containers:
+    - name: postgresql
+      resources:
+        request:
+          cpu: 500
+          memory: 2560
+        limit:
+          cpu: 2000
+          memory: 4096
   volumes:
   - name: data
     size: 20
@@ -32,3 +58,8 @@ services:
   volumes:
   - name: data
     size: 10
+
+- name: opensmtpd
+  title: OpenSMTPD
+  service: opensmtpd:7
+  required: true
