@@ -5,7 +5,7 @@ title: GitLab
 services:
 - name: gitlab
   title: GitLab Community Edition
-  service: gitlab:19
+  service: gitlab
   required: true
   main: true
   links:
@@ -21,7 +21,7 @@ services:
 
 - name: runner
   title: GitLab Runner
-  service: gitlab-runner:19
+  service: gitlab-runner
   disabled: true
   links:
   - name: gitlab
@@ -29,7 +29,10 @@ services:
 
 - name: postgres
   title: PostgreSQL
-  service: postgres:17
+  service: postgres
+  options:
+  - version: '17'
+    default: true
   required: true
   env:
   - name: POSTGRES_DB
@@ -61,7 +64,10 @@ services:
 
 - name: valkey
   title: Valkey
-  service: valkey:8.1
+  service: valkey
+  options:
+  - version: '8.1'
+    default: true
   required: true
   volumes:
   - name: data
@@ -69,5 +75,5 @@ services:
 
 - name: opensmtpd
   title: OpenSMTPD
-  service: opensmtpd:7
+  service: opensmtpd
   required: true
