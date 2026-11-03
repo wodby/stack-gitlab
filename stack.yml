@@ -70,6 +70,12 @@ services:
   - version: '8.1'
     default: true
   required: true
+  # GitLab keeps Sidekiq jobs and sessions in this Valkey, so it must never evict keys.
+  env:
+  - name: VALKEY_MAXMEMORY
+    value: 1gb
+  - name: VALKEY_MAXMEMORY_POLICY
+    value: noeviction
   volumes:
   - name: data
     size: 10
