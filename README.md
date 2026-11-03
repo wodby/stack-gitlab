@@ -5,7 +5,8 @@ Wodby 2 stack for a self-hosted GitLab installation using the Community Edition.
 The stack combines GitLab 19, an optional GitLab Runner 19, PostgreSQL 17, Valkey 8.1, and OpenSMTPD 7. GitLab
 repository data is persistent, and PostgreSQL and Valkey use their own persistent volumes. The PostgreSQL service
 initializes the GitLab database with the required `amcheck`, `btree_gist`, and `pg_trgm` extensions and applies
-GitLab's minimum connection and memory settings.
+GitLab's minimum connection and memory settings. Valkey is limited to 1 GB and never evicts keys, because it holds
+GitLab's background jobs and sessions.
 
 ## Create an app
 
