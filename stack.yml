@@ -54,8 +54,8 @@ services:
     - name: postgresql
       resources:
         request:
-          cpu: 500
-          memory: 2560
+          cpu: 50
+          memory: 352
         limit:
           cpu: 2000
           memory: 4096
