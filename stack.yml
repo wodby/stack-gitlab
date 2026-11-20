@@ -2,6 +2,7 @@ name: gitlab
 icon: gitlab
 docs: https://wodby.com/docs/2.0/stacks/catalog/gitlab/
 title: GitLab
+category: devtools
 
 services:
 - name: gitlab
